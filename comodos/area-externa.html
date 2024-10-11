@@ -1,0 +1,442 @@
+<html><head><base href="/comodos/area-externa.html">
+    <title>KriolSync - Area Externa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+    
+      :root {
+        --primary-color: #00ffff;
+        --secondary-color: #ff00ff;
+        --background-color: #0a0a1f;
+        --text-color: #ffffff;
+        --card-bg-color: rgba(255, 255, 255, 0.1);
+        --card-hover-color: rgba(255, 255, 255, 0.2);
+      }
+    
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+      }
+    
+      .header {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: var(--background-color);
+        padding: 2rem;
+        text-align: center;
+        font-family: 'Orbitron', sans-serif;
+        position: relative;
+        overflow: hidden;
+      }
+    
+      .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transform: translateX(-100%);
+        animation: shimmer 3s infinite;
+      }
+    
+      @keyframes shimmer {
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+    
+      .control-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+    
+      .control-card {
+        background-color: var(--card-bg-color);
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        text-align: center;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    
+      .control-card:hover {
+        transform: translateY(-5px);
+        background-color: var(--card-hover-color);
+        box-shadow: 0 0 25px rgba(255, 0, 255, 0.5);
+      }
+    
+      .control-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+    
+      .control-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+        font-family: 'Orbitron', sans-serif;
+      }
+    
+      .nav-menu {
+        background-color: rgba(10, 10, 31, 0.8);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+    
+      .nav-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+    
+      .nav-item {
+        margin: 0 1rem;
+      }
+    
+      .nav-link {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        font-family: 'Orbitron', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+      }
+    
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        transition: width 0.3s ease;
+      }
+    
+      .nav-link:hover::after {
+        width: 100%;
+      }
+    
+      .nav-link:hover {
+        color: var(--primary-color);
+      }
+    
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+    
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+    
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 34px;
+      }
+    
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+      }
+    
+      input:checked + .slider {
+        background-color: var(--primary-color);
+      }
+    
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+    
+      .range-slider {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 100%;
+        height: 15px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        transition: opacity .2s;
+      }
+    
+      .range-slider:hover {
+        opacity: 1;
+      }
+    
+      .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        cursor: pointer;
+      }
+    
+      .range-slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: var(--primary-color);
+        cursor: pointer;
+      }
+
+      .action-button {
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      color: var(--background-color);
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 25px;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .action-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    
+      footer {
+        background-color: rgba(10, 10, 31, 0.8);
+        color: var(--text-color);
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+    
+      @media (max-width: 768px) {
+        .control-grid {
+          grid-template-columns: 1fr;
+        }
+        
+      }
+    </style>
+    </head>
+    <body>
+      <header class="header">
+        <h1>Area Externa</h1>
+        <p>Controle Inteligente para o seu Conforto</p>
+      </header>
+    
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+          <li class="nav-item"><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+          <li class="nav-item"><a href="/settings.html" class="nav-link">Configurações</a></li>
+          <li class="nav-item"><a href="/support.html" class="nav-link">Suporte</a></li>
+        </ul>
+      </nav>
+      
+      <div class="container">
+        <div class="control-grid">
+          <div class="control-card">
+            <div class="control-icon">💡</div>
+            <h3 class="control-title">Iluminação Principal</h3>
+            <label class="switch">
+              <input type="checkbox" id="mainLight">
+              <span class="slider"></span>
+            </label>
+            <p>Intensidade:</p>
+            <input type="range" min="1" max="100" value="50" class="range-slider" id="mainLightIntensity">
+          </div>
+    
+          <div class="control-card">
+            <div class="control-icon">🌡️</div>
+            <h3 class="control-title">Temperatura</h3>
+            <p id="currentTemperature">45%</p>
+            <div id="temperatureChart"></div>
+             </div>
+    
+          <div class="control-card">
+            <div class="control-icon">💧</div>
+            <h3 class="control-title">Umidade</h3>
+            <p id="currentHumidity">45%</p>
+            <div id="humidityChart"></div>
+          </div>
+    
+          <div class="control-card">
+            <div class="control-icon">📺</div>
+            <h3 class="control-title">TV Smart</h3>
+            <label class="switch">
+              <input type="checkbox" id="tvPower">
+              <span class="slider"></span>
+            </label>
+            <p>Volume:</p>
+            <input type="range" min="0" max="100" value="30" class="range-slider" id="tvVolume">
+          </div>
+    
+          <div class="control-card">
+            <div class="control-icon">🪟</div>
+            <h3 class="control-title">Cortinas</h3>
+            <p>Abertura:</p>
+            <input type="range" min="0" max="100" value="50" class="range-slider" id="curtainControl">
+          </div>
+    
+          <div class="control-card">
+            <div class="control-icon">🚪</div>
+            <h3 class="control-title">Porta</h3>
+            <p id="doorStatus">Fechada</p>
+            <button class="action-button" onclick="toggleDoor()">Abrir/Fechar</button>
+          </div>
+        </div>
+      </div>
+    
+      <footer>
+        <p>&copy; 2023 KriolSync. Todos os direitos reservados.</p>
+      </footer>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        // Simulação de dados de umidade
+        const humidityData = {
+          labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+          datasets: [{
+            label: 'Umidade (%)',
+            data: [40, 42, 45, 48, 46, 45],
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+          }]
+        };
+    
+        // Configuração do gráfico de umidade
+        const humidityCtx = document.createElement('canvas');
+        document.getElementById('humidityChart').appendChild(humidityCtx);
+        new Chart(humidityCtx, {
+          type: 'line',
+          data: humidityData,
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100
+              }
+            }
+          }
+        });
+
+        const temperatureData = {
+          labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+          datasets: [{
+            label: 'Umidade (%)',
+            data: [40, 42, 45, 48, 46, 45],
+            borderColor: 'rgb(255, 0, 0)',
+            tension: 0.1
+          }]
+        };
+    
+        // Configuração do gráfico de umidade
+        const temperatureCtx = document.createElement('canvas');
+        document.getElementById('temperatureChart').appendChild(temperatureCtx);
+        new Chart(temperatureCtx, {
+          type: 'line',
+          data: temperatureData,
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100
+              }
+            }
+          }
+        });
+    
+        // Funções de controle
+        function toggleDoor() {
+          const doorStatus = document.getElementById('doorStatus');
+          doorStatus.textContent = doorStatus.textContent === 'Fechada' ? 'Aberta' : 'Fechada';
+        }
+    
+        // Event listeners para controles
+        document.getElementById('mainLight').addEventListener('change', function() {
+          console.log('Luz principal: ' + (this.checked ? 'Ligada' : 'Desligada'));
+        });
+    
+        document.getElementById('mainLightIntensity').addEventListener('input', function() {
+          console.log('Intensidade da luz principal: ' + this.value + '%');
+        });
+    
+        document.getElementById('tempControl').addEventListener('input', function() {
+          document.getElementById('currentTemp').textContent = this.value + '°C';
+        });
+    
+        document.getElementById('tvPower').addEventListener('change', function() {
+          console.log('TV: ' + (this.checked ? 'Ligada' : 'Desligada'));
+        });
+    
+        document.getElementById('tvVolume').addEventListener('input', function() {
+          console.log('Volume da TV: ' + this.value + '%');
+        });
+    
+        document.getElementById('curtainControl').addEventListener('input', function() {
+          console.log('Abertura das cortinas: ' + this.value + '%');
+        });
+    
+        // Efeito de fade-in na página
+        document.body.style.opacity = '0';
+        window.addEventListener('load', function() {
+          document.body.style.transition = 'opacity 0.5s ease';
+          document.body.style.opacity = '1';
+        });
+    
+        // Animação suave ao clicar nos links de navegação
+        document.querySelectorAll('a[href^="/"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.body.style.opacity = 0;
+            setTimeout(() => {
+              window.location.href = this.getAttribute('href');
+            }, 500);
+          });
+        });
+      </script>
+    </body></html>

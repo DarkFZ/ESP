@@ -1,0 +1,386 @@
+<html><head><base href="/settings.html">
+<title>KriolSync - Configurações</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+  :root {
+    --primary-color: #00ffff;
+    --secondary-color: #ff00ff;
+    --background-color: #0a0a1f;
+    --text-color: #ffffff;
+    --card-bg-color: rgba(255, 255, 255, 0.1);
+    --card-hover-color: rgba(255, 255, 255, 0.2);
+    --switch-on-color: #00ff00;
+    --switch-off-color: #ff0000;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+  }
+
+  .header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--background-color);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .settings-section {
+    background-color: var(--card-bg-color);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .settings-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .setting-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-off-color);
+    transition: .4s;
+    border-radius: 34px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: var(--switch-on-color);
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+
+  .select-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .select-wrapper::after {
+    content: "▼";
+    font-size: 1rem;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  select {
+    appearance: none;
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
+  }
+
+  .save-button {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: var(--background-color);
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 20px auto 0;
+    cursor: pointer;
+    border-radius: 25px;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+  }
+
+  .save-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+
+  .nav-menu {
+    background-color: rgba(10, 10, 31, 0.8);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-item {
+    margin: 0 1rem;
+  }
+
+  .nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link:hover {
+    color: var(--primary-color);
+  }
+
+  footer {
+    background-color: rgba(10, 10, 31, 0.8);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .setting-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .switch, .select-wrapper {
+      margin-top: 0.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <h1>Configurações do KriolSync</h1>
+  </header>
+
+  <nav class="nav-menu">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+      <li class="nav-item"><a href="/dashboard.html" class="nav-link">Dashboard</a></li>
+      <li class="nav-item"><a href="/settings.html" class="nav-link">Configurações</a></li>
+      <li class="nav-item"><a href="/support.html" class="nav-link">Suporte</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <section class="settings-section">
+      <h2 class="settings-title">Configurações Gerais</h2>
+      <div class="setting-item">
+        <span>Modo Noturno Automático</span>
+        <label class="switch">
+          <input type="checkbox" id="nightMode">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span>Notificações Push</span>
+        <label class="switch">
+          <input type="checkbox" id="pushNotifications">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span>Idioma</span>
+        <div class="select-wrapper">
+          <select id="language">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <h2 class="settings-title">Segurança</h2>
+      <div class="setting-item">
+        <span>Autenticação de Dois Fatores</span>
+        <label class="switch">
+          <input type="checkbox" id="twoFactor">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span>Alertas de Movimento</span>
+        <label class="switch">
+          <input type="checkbox" id="motionAlerts">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="settings-section">
+      <h2 class="settings-title">Economia de Energia</h2>
+      <div class="setting-item">
+        <span>Modo Econômico Automático</span>
+        <label class="switch">
+          <input type="checkbox" id="ecoMode">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span>Desligar Dispositivos Ociosos</span>
+        <div class="select-wrapper">
+          <select id="idleTimeout">
+            <option value="15">Após 15 minutos</option>
+            <option value="30">Após 30 minutos</option>
+            <option value="60">Após 1 hora</option>
+            <option value="never">Nunca</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <button class="save-button" onclick="saveSettings()">Salvar Configurações</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2023 KriolSync. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function saveSettings() {
+      // Simula o salvamento das configurações
+      const settings = {
+        nightMode: document.getElementById('nightMode').checked,
+        pushNotifications: document.getElementById('pushNotifications').checked,
+        language: document.getElementById('language').value,
+        twoFactor: document.getElementById('twoFactor').checked,
+        motionAlerts: document.getElementById('motionAlerts').checked,
+        ecoMode: document.getElementById('ecoMode').checked,
+        idleTimeout: document.getElementById('idleTimeout').value
+      };
+
+      console.log('Configurações salvas:', settings);
+      alert('Configurações salvas com sucesso!');
+    }
+
+    // Efeito de fade-in na página
+    document.body.style.opacity = '0';
+    window.addEventListener('load', function() {
+      document.body.style.transition = 'opacity 0.5s ease';
+      document.body.style.opacity = '1';
+    });
+
+    // Animação suave ao clicar nos links de navegação
+    document.querySelectorAll('a[href^="/"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+          window.location.href = this.getAttribute('href');
+        }, 500);
+      });
+    });
+  </script>
+</body></html>

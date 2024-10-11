@@ -1,0 +1,322 @@
+<html><head><base href="/support.html">
+<title>KriolSync - Suporte</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+  :root {
+    --primary-color: #00ffff;
+    --secondary-color: #ff00ff;
+    --background-color: #0a0a1f;
+    --text-color: #ffffff;
+    --card-bg-color: rgba(255, 255, 255, 0.1);
+    --card-hover-color: rgba(255, 255, 255, 0.2);
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    overflow-x: hidden;
+  }
+
+  .header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--background-color);
+    padding: 2rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .support-card {
+    background-color: var(--card-bg-color);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .support-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 255, 255, 0.5);
+    background-color: var(--card-hover-color);
+  }
+
+  .support-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .support-content {
+    margin-bottom: 1rem;
+  }
+
+  .support-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .support-link:hover {
+    color: var(--primary-color);
+  }
+
+  .nav-menu {
+    background-color: rgba(10, 10, 31, 0.8);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-item {
+    margin: 0 1rem;
+  }
+
+  .nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link:hover {
+    color: var(--primary-color);
+  }
+
+  .chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--background-color);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .chat-button:hover {
+    transform: scale(1.1);
+  }
+
+  footer {
+    background-color: rgba(10, 10, 31, 0.8);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .support-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header">
+    <h1>Suporte KriolSync</h1>
+  </header>
+
+  <nav class="nav-menu">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="/" class="nav-link">Início</a></li>
+      <li class="nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>
+      <li class="nav-item"><a href="/settings" class="nav-link">Configurações</a></li>
+      <li class="nav-item"><a href="/support" class="nav-link">Suporte</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="support-grid">
+      <div class="support-card">
+        <h2 class="support-title">Perguntas Frequentes</h2>
+        <div class="support-content">
+          <p>Encontre respostas para as dúvidas mais comuns sobre o KriolSync.</p>
+        </div>
+        <a href="#" class="support-link" onclick="loadFAQ()">Ver FAQs</a>
+      </div>
+
+      <div class="support-card">
+        <h2 class="support-title">Guias de Instalação</h2>
+        <div class="support-content">
+          <p>Instruções passo a passo para configurar seus dispositivos KriolSync.</p>
+        </div>
+        <a href="#" class="support-link" onclick="loadInstallationGuides()">Ver Guias</a>
+      </div>
+
+      <div class="support-card">
+        <h2 class="support-title">Resolução de Problemas</h2>
+        <div class="support-content">
+          <p>Soluções para problemas comuns e dicas de manutenção.</p>
+        </div>
+        <a href="#" class="support-link" onclick="loadTroubleshooting()">Resolver Problemas</a>
+      </div>
+
+      <div class="support-card">
+        <h2 class="support-title">Contato</h2>
+        <div class="support-content">
+          <p>Entre em contato com nossa equipe de suporte para assistência personalizada.</p>
+        </div>
+        <a href="#" class="support-link" onclick="showContactForm()">Contatar Suporte</a>
+      </div>
+
+      <div class="support-card">
+        <h2 class="support-title">Atualizações de Software</h2>
+        <div class="support-content">
+          <p>Mantenha seu sistema KriolSync atualizado com as últimas melhorias.</p>
+        </div>
+        <a href="#" class="support-link" onclick="checkForUpdates()">Verificar Atualizações</a>
+      </div>
+
+      <div class="support-card">
+        <h2 class="support-title">Comunidade</h2>
+        <div class="support-content">
+          <p>Junte-se à comunidade KriolSync para dicas, truques e discussões.</p>
+        </div>
+        <a href="#" class="support-link" onclick="joinCommunity()">Acessar Fórum</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="chat-button" onclick="openLiveChat()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </button>
+
+  <footer>
+    <p>&copy; 2023 KriolSync. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function loadFAQ() {
+      alert('Carregando Perguntas Frequentes...');
+      // Implementar carregamento do FAQ
+    }
+
+    function loadInstallationGuides() {
+      alert('Carregando Guias de Instalação...');
+      // Implementar carregamento dos guias de instalação
+    }
+
+    function loadTroubleshooting() {
+      alert('Carregando Resolução de Problemas...');
+      // Implementar carregamento da seção de resolução de problemas
+    }
+
+    function showContactForm() {
+      alert('Abrindo formulário de contato...');
+      // Implementar exibição do formulário de contato
+    }
+
+    function checkForUpdates() {
+      alert('Verificando atualizações de software...');
+      // Implementar verificação de atualizações
+    }
+
+    function joinCommunity() {
+      alert('Redirecionando para o fórum da comunidade...');
+      // Implementar redirecionamento para o fórum da comunidade
+    }
+
+    function openLiveChat() {
+      alert('Iniciando chat ao vivo com um representante de suporte...');
+      // Implementar funcionalidade de chat ao vivo
+    }
+
+    // Efeito de fade-in na página
+    document.body.style.opacity = '0';
+    window.addEventListener('load', function() {
+      document.body.style.transition = 'opacity 0.5s ease';
+      document.body.style.opacity = '1';
+    });
+
+    // Animação suave ao clicar nos links de navegação
+    document.querySelectorAll('a[href^="/"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+          window.location.href = this.getAttribute('href');
+        }, 500);
+      });
+    });
+  </script>
+</body></html>
