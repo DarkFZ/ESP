@@ -1,3 +1,6 @@
 [submodule "Auto"]
 	path = Auto
 	url = https://github.com/DarkFZ/ESP.git
+[submodule "ESP"]
+	path = ESP
+	url = https://github.com/DarkFZ/ESP.git
